@@ -12,4 +12,4 @@ if [ "$1" == "" ]; then
     exit 1
 fi
 
-docker exec spigot_$INSTANCE_NAME bash mc_send_command.sh "$*"
+docker exec spigot_$INSTANCE_NAME bash send_command.sh "$*"

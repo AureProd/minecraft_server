@@ -1,0 +1,18 @@
+version: '3.7'
+services:
+  spigot:
+    container_name: spigot_${INSTANCE_NAME}
+    build: 
+      context: .
+      dockerfile: Dockerfile
+      args:
+        - SERVER_VERSION=${SERVER_VERSION}
+        - JAVA_VERSION=${JAVA_VERSION}
+    image: aureprod/spigot:${SERVER_VERSION}
+    environment:
+      - SERVER_MIN_RAM=${SERVER_MIN_RAM}
+      - SERVER_MAX_RAM=${SERVER_MAX_RAM}
+    volumes:
+      - ./build:/srv/server
+    ports:
+      - ${SERVER_PORT}:25565

@@ -7,10 +7,10 @@ RESET="\e[0m"
 
 echo -e "${YELLOW}Restarting server...${RESET}"
 
-./down.sh
+./stop.sh
 
 sleep 1
 
-./up.sh
+./start.sh
 
 echo -e "${GREEN}Server restarted.${RESET}"

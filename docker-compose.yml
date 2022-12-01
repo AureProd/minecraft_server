@@ -12,6 +12,7 @@ services:
     environment:
       - SERVER_MIN_RAM=${SERVER_MIN_RAM}
       - SERVER_MAX_RAM=${SERVER_MAX_RAM}
+      - NEED_DEV_INSTALL=${NEED_DEV_INSTALL}
     volumes:
       - ./build:/srv/server
     ports:

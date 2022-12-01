@@ -4,7 +4,7 @@ if [ ! -f .env ]; then
     echo "No .env file found. Please create one."
     exit 1
 else
-    export $(cat .env | xargs)
+    $INSTANCE_NAME=$(grep INSTANCE_NAME .env | cut -d '=' -f2)
 fi
 
 if [ "$1" == "" ]; then

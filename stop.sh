@@ -16,4 +16,8 @@ else
     INSTANCE_NAME=$(grep INSTANCE_NAME $PROJECT_PATH/.env | cut -d '=' -f2)
 fi
 
-docker logs spigot-$INSTANCE_NAME -f
+echo -e "${YELLOW}Stopping server...${RESET}"
+
+docker-compose --project-name server-$INSTANCE_NAME -f $PROJECT_PATH/docker-compose.yml --env-file $PROJECT_PATH/.env down
+
+echo -e "${GREEN}Server stopped.${RESET}"

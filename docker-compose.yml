@@ -1,13 +1,14 @@
 version: '3.7'
 services:
   spigot:
-    container_name: spigot_${INSTANCE_NAME}
+    container_name: spigot-${INSTANCE_NAME}
     build: 
       context: .
       dockerfile: Dockerfile
       args:
         - SERVER_VERSION=${SERVER_VERSION}
         - JAVA_VERSION=${JAVA_VERSION}
+        - USER_ID=${USER_ID}
     image: aureprod/spigot:${SERVER_VERSION}
     environment:
       - SERVER_MIN_RAM=${SERVER_MIN_RAM}

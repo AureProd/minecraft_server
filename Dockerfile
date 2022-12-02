@@ -21,6 +21,9 @@ RUN java -jar BuildTools.jar --rev ${SERVER_VERSION}
 FROM builder1
 
 ARG SERVER_VERSION
+ARG USER_ID
+
+RUN useradd -u ${USER_ID} -m user
 
 WORKDIR /srv
 
@@ -31,6 +34,10 @@ RUN mkdir ./server
 COPY --from=builder2 /srv/spigot-${SERVER_VERSION}.jar ./spigot.jar
 
 COPY ./src .
+
+RUN chown -R user:user /srv
+
+USER user
 
 # start minecraft server and print logs
 CMD ./entrypoint.sh
